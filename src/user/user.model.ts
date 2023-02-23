@@ -1,4 +1,3 @@
-import { TimeoutError, Timestamp } from 'rxjs'
 import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses'
 import { prop } from '@typegoose/typegoose'
 
