@@ -1,10 +1,10 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common'
+import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { InjectModel } from 'nestjs-typegoose'
 import { UserModel } from '../user/user.model'
 import { ModelType } from '@typegoose/typegoose/lib/types'
 import { JwtService } from '@nestjs/jwt'
 import { AuthDto } from './auth.dto'
-import { compare, genSalt, getSalt, hash } from 'bcryptjs'
+import { compare, genSalt, hash } from 'bcryptjs'
 
 @Injectable()
 export class AuthService {
