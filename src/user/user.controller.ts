@@ -1,8 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { UserService } from './user.service'
 import Mongoose from 'mongoose'
 import { OrganizationDto } from './dto/organization.dto'
-import { OrderModel } from './model/order.model'
 import { OrderDto } from './dto/order.dto'
 
 @Controller('users')
@@ -44,5 +43,14 @@ export class UserController {
 		return this.userService.deleteOrders(dto)
 	}
 
+	@Put('/organizations')
+	updateOrganization(@Body() dto: OrganizationDto){
+		return this.userService.updateOrganization(dto)
+	}
+
+	@Put('/order')
+	updateOrder(@Body() dto: OrderDto){
+		return this.userService.updateOrder(dto)
+	}
 
 }

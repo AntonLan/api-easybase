@@ -4,7 +4,6 @@ import { UserModel } from './model/user.model'
 import { ModelType } from '@typegoose/typegoose/lib/types'
 import { OrganizationModel } from './model/organization.model'
 import { OrderModel } from './model/order.model'
-import { use } from 'passport'
 
 @Injectable()
 export class UserService {
@@ -60,6 +59,17 @@ export class UserService {
 		user.save()
 		return order
 	}
+
+	async updateOrganization(dto) {
+		const organization = this.organizationModel.findByIdAndUpdate(dto.id, dto)
+		return organization
+	}
+
+	async updateOrder(dto) {
+		const order = this.orderModel.findByIdAndUpdate(dto.id, dto)
+		return order
+	}
+
 
 
 }
