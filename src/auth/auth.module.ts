@@ -24,6 +24,10 @@ import { getJwtConfig } from '../config/jwt.config'
 			useFactory: getJwtConfig
 		})
 	],
+	exports: [
+		AuthService,
+		JwtModule
+	],
 	providers: [AuthService],
 	controllers: [AuthController]
 })

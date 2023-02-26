@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common'
 import { UserService } from './user.service'
 import Mongoose from 'mongoose'
 import { OrganizationDto } from './dto/organization.dto'
 import { OrderDto } from './dto/order.dto'
+import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 
 @Controller('users')
 export class UserController {
@@ -22,8 +23,9 @@ export class UserController {
 		return this.userService.createOrganization(dto)
 	}
 
+	@UseGuards(JwtAuthGuard)
 	@Get(':id')
-	getOrganization(@Param('id') id: Mongoose.Types.ObjectId) {
+	getUser(@Param('id') id: Mongoose.Types.ObjectId) {
 		const organizations = this.userService.getUserData(id)
 		return organizations
 	}

@@ -5,9 +5,11 @@ import { TypegooseModule } from 'nestjs-typegoose'
 import { UserModel } from './model/user.model'
 import { OrganizationModel } from './model/organization.model'
 import { OrderModel } from './model/order.model'
+import { AuthModule } from '../auth/auth.module'
 
 @Module({
   imports: [
+    AuthModule,
     TypegooseModule.forFeature([
       {
         typegooseClass: UserModel,
