@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { InjectModel } from 'nestjs-typegoose'
-import { UserModel } from '../user/user.model'
+import { UserModel } from '../user/model/user.model'
 import { ModelType } from '@typegoose/typegoose/lib/types'
 import { JwtService } from '@nestjs/jwt'
 import { AuthDto } from './auth.dto'
@@ -29,11 +29,12 @@ export class AuthService {
 
 	async register(dto: AuthDto) {
 		const oldUser = await this.userModel.findOne({email: dto.email})
-		if(oldUser) throw new UnauthorizedException('User with this email is already in the system')
+		if(oldUser) throw new UnauthorizedException('UserModel with this email is already in the system')
 		const salt = await genSalt(10)
 		const newUser = new this.userModel({
+			userName: dto.userName,
 			email: dto.email,
-			password: await hash(dto.password, salt)
+			password: await hash(dto.password, salt),
 		})
 		const user = await newUser.save()
 		const tokens = await this.issueTokenPair(String(user._id))
@@ -45,7 +46,7 @@ export class AuthService {
 
 	async validateUser(dto: AuthDto) {
 		const user = await this.userModel.findOne({email: dto.email})
-		if(!user) throw new UnauthorizedException('User not found')
+		if(!user) throw new UnauthorizedException('UserModel not found')
 
 		const isValidPassword = await compare(dto.password, user.password)
 		if (!isValidPassword) throw new UnauthorizedException('Invalid password')
@@ -64,7 +65,8 @@ export class AuthService {
 	returnUserFields(user: UserModel) {
 		return {
 			_id: user._id,
-			email: user.email
+			username: user.userName,
+			email: user.email,
 		}
 	}
 

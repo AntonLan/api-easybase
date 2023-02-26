@@ -1,4 +1,5 @@
 import { IsEmail, IsString, MinLength } from 'class-validator'
+import Mongoose from 'mongoose'
 
 export class AuthDto {
 
