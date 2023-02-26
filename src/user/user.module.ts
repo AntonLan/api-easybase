@@ -12,7 +12,7 @@ import { OrderModel } from './model/order.model'
       {
         typegooseClass: UserModel,
         schemaOptions: {
-          collection: 'User'
+          collection: 'users'
         }
       },
     ]),
@@ -20,7 +20,7 @@ import { OrderModel } from './model/order.model'
       {
         typegooseClass: OrganizationModel,
         schemaOptions: {
-          collection: 'Organization'
+          collection: 'organizations'
         }
       },
     ]),
@@ -28,7 +28,7 @@ import { OrderModel } from './model/order.model'
       {
         typegooseClass: OrderModel,
         schemaOptions: {
-          collection: 'Order'
+          collection: 'orders'
         }
       },
     ]),

@@ -13,7 +13,7 @@ import { getJwtConfig } from '../config/jwt.config'
 			{
 				typegooseClass: UserModel,
 				schemaOptions: {
-					collection: 'User'
+					collection: 'users'
 				}
 			},
 		]),

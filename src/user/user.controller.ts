@@ -3,7 +3,7 @@ import { UserService } from './user.service'
 import Mongoose from 'mongoose'
 import { OrganizationDto } from './dto/organization.dto'
 
-@Controller('User')
+@Controller('users')
 export class UserController {
 
 
@@ -21,7 +21,7 @@ export class UserController {
 		return this.userService.getUserById(id)
 	}
 
-	@Post('/organization')
+	@Post('/organizations')
 	createOrganization(@Body() dto: OrganizationDto) {
 		return this.userService.createOrganization(dto)
 	}
