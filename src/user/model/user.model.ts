@@ -18,10 +18,10 @@ export class UserModel extends TimeStamps {
 	@prop()
 	password: string
 
-	@prop({ ref: () => OrderModel, type: () => OrderModel })
-	orders: OrderModel[]
-
 	@prop({ ref: () => OrganizationModel})
 	organizations: OrganizationModel[]
+
+	@prop({ ref: () => OrderModel})
+	orders: OrderModel[]
 }
 

@@ -1,17 +1,19 @@
-import { IsEmail, IsString, MinLength } from 'class-validator'
-import Mongoose from 'mongoose'
+import { IsEnum, IsMongoId, IsString } from 'class-validator'
+import { ProgressEnum } from '../model/ProgressEnum'
 
-export class AuthDto {
+
+export class OrderDto {
+
+
+	@IsEnum(ProgressEnum)
+	progress: ProgressEnum
 
 	@IsString()
-	userName: string
+	client: string
 
-	@IsEmail()
-	email: string
-
-	@MinLength(8,{
-		message: 'Password cannot be less than 8 character!'
-	})
 	@IsString()
-	password: string
+	orderType: string
+
+	@IsMongoId()
+	userId: string
 }

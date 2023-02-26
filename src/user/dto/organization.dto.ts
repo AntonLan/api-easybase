@@ -1,7 +1,4 @@
 import { IsEmail, IsMongoId, IsPhoneNumber, IsString } from 'class-validator'
-import Mongoose from 'mongoose'
-import { identity } from 'rxjs'
-import { mongoose } from '@typegoose/typegoose'
 
 export class OrganizationDto {
 
