@@ -9,4 +9,4 @@ async function bootstrap() {
 	await app.listen(PORT, () => console.log(`Server start on ${PORT}`))
 }
 
-bootstrap().then(r => console.log(r))
+bootstrap()
