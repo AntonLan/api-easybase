@@ -50,7 +50,7 @@ export class UserController {
 		return this.userService.updateOrganization(dto)
 	}
 
-	@Put('/order')
+	@Put('/orders')
 	updateOrder(@Body() dto: OrderDto){
 		return this.userService.updateOrder(dto)
 	}
